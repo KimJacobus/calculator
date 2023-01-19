@@ -2,25 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-fontFamily: {
 
-    @font-face {
-font-family : dosis;
-src: url(fonts/Dosis-VariableFont_wght.ttf)
-}
-@font-face {
-font-family : sofia;
-src: url(fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf)
-}
-
-
-.dosis {
-font-family: dosis;
-}
-
-.sofia {
-font-family: sofia;
-}
-
+/* @layer base {
+  @font-face {
+    font-family: dosis;
+    src: url(fonts/Dosis-VariableFont_wght.ttf) format("tff");
   }
+  @font-face {
+    font-family: sofia;
+    src: url(fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf) format("ttf");
+  }
+} */
+
 

@@ -1,27 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,html,css}",
-  ],
+  content: ["./src/**/*.{js,ts,html,css}"],
   theme: {
 
     extend: {
 
-    fontFamily : {
-      'dosis': ['dosis', 'sans-serif'] 
-    },
+  //   fontFamily : {
+  //     'dosis': ['dosis', 'sans-serif'] 
+  //   },
 
-    fontFamily : {
+  //   fontFamily : {
 
-      'sofia': ['sofia', 'sans-serif']
-    },
+  //     'sofia': ['sofia', 'sans-serif']
+  //   },
   
-  }, 
+  // }, 
       
     },
   plugins: [
 
+
+
   ],
+  }
 }

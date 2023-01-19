@@ -4,7 +4,7 @@ import { resolve } from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   root: "src",
-  base: "live",
+  base: "/calculator/",
   build: {
     rollupOptions: {
       input: {
