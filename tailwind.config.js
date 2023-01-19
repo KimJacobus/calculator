@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./index.html",
@@ -8,15 +9,18 @@ module.exports = {
 
     extend: {
 
-    fontFamily: {
-      primary: 'dosis' 
-    }, 
-    fontFamily: {
-      primary: 'sofia' 
-    }, 
+    fontFamily : {
+      'dosis': ['dosis', 'sans-serif'] 
+    },
+
+    fontFamily : {
+
+      'sofia': ['sofia', 'sans-serif']
+    },
+  
+  }, 
       
     },
-  },
   plugins: [
 
   ],
