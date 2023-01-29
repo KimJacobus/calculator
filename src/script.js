@@ -59,8 +59,13 @@ function getOperators() {
     clearOperators[0].addEventListener("click", (event) => {
         // calculate.convertNum();
         calculate.Math();
+        calculate.stashNum();
         effects.clearoperatorsPress(event);
+
+        if(amountOne !== 0) {
         input.show();
+        }
+
         calculate.clearMemory();
 
         // resetOperator = true;
@@ -71,8 +76,8 @@ function getOperators() {
     clearOperators[1].addEventListener("click", (event) => {
         effects.animateBounce(event);
         effects.clearoperatorsPress(event);
-        input.clear();
         calculate.clearMemory();
+        input.clear();
     });
 
 
@@ -147,9 +152,6 @@ var input = {
     },
 
     show : function() {
-        
-
-
         inputScreen.innerHTML = amountOne; 
     },
 
