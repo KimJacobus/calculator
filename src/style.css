@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 
-/* @layer base {
-  @font-face {
-    font-family: dosis;
-    src: url(fonts/Dosis-VariableFont_wght.ttf) format("tff");
-  }
-  @font-face {
-    font-family: sofia;
-    src: url(fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf) format("ttf");
-  }
-} */
+    .numbers {
+        @apply row-span-1 text-6xl lg:text-7xl hover:bg-slate-400 cursor-default 
+    };
+    .darknumbers {
+        @apply row-span-1 text-6xl lg:text-7xl bg-slate-800 hover:bg-slate-800 cursor-default 
+    }
+
+
+    
+
 
 
