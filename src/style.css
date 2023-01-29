@@ -3,12 +3,7 @@
 @tailwind utilities;
 
 
-    .numbers {
-        @apply row-span-1 text-6xl lg:text-7xl hover:bg-slate-400 cursor-default 
-    };
-    .darknumbers {
-        @apply row-span-1 text-6xl lg:text-7xl bg-slate-800 hover:bg-slate-800 cursor-default 
-    }
+
 
 
     
