@@ -22,10 +22,14 @@
 - functionality of what to do when other button is clicked except of equal is gonna need some work.
 
 - stashNum and math isn't working properly yet.
+you have to recheck the entire logic behind stashing in amount 2 and getting in amount 1; 
+
+
+
+* try to make localStorage functionality work ? 
 
 
 <!-- - Have no idea why amountOne suddenly works as a global variable. -->
-
 
 
 <!-- - the effects press function should be more dynamic : you can't use setAttribute, you have to use classlist

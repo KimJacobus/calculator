@@ -11,9 +11,9 @@ var inputHead = document.getElementById('inputHead');
 
 var amountOne = '';
 var amountTwo = '';
-var stashOperator = '';
+var stashOperator =' ';
 var resetOperator; 
-var amountThree = 0;
+var amountThree = ' ';
 
 
 
@@ -27,26 +27,25 @@ function windowFunctions() {
 function getNumbers() {
     for (let i = 0; i < numbers.length; i++) {
      numbers[i].addEventListener("click", (event) => {
-        if(resetOperator) {
+
+        // when should the number button empty out the inputscreen ? 
+        // always, but never delete the memory
+        // screen addition gets replaced by clicked button if you always do an input clear
+        // input clear only after the math operator stashed. 
+
+        // ===> actually the numbers never need a input clear ? 
 
 
-            input.clear();
-            calculate.clearMemory();
+            // calculate.clearMemory();
+
             effects.numbersPress(event);
             input.inputNumbers(event); 
 
-            stashOperator = '';
-            resetOperator = false; 
-
-        }
-        else {
+            // resetOperator = false; 
 
 
-        effects.numbersPress(event);
-        input.inputNumbers(event); 
-
-        }
-     }) 
+        });
+      
     };
 };
 
@@ -57,17 +56,25 @@ function getOperators() {
 
     // equal button
     clearOperators[0].addEventListener("click", (event) => {
-        // calculate.convertNum();
+        
+        calculate.getAmount();
+        calculate.convertNum();
+
         calculate.Math();
-        calculate.stashNum();
-        effects.clearoperatorsPress(event);
-
-        if(amountOne !== 0) {
         input.show();
-        }
 
+        effects.clearoperatorsPress(event);
         calculate.clearMemory();
+        stashOperator = ' ';
 
+
+        // i don't understand this anymore
+
+        // if(amountOne !== 0) {
+        // input.show();
+        // }
+
+      
         // resetOperator = true;
     });
 
@@ -78,6 +85,8 @@ function getOperators() {
         effects.clearoperatorsPress(event);
         calculate.clearMemory();
         input.clear();
+        stashOperator = ' ';
+
     });
 
 
@@ -86,6 +95,7 @@ function getOperators() {
     for (let i = 0; i < mathOperators.length; i++) {
 
     mathOperators[i].addEventListener("click", (event) => {
+
         calculate.getAmount();
         calculate.convertNum();
         calculate.stashMath(event);
@@ -152,7 +162,7 @@ var input = {
     },
 
     show : function() {
-        inputScreen.innerHTML = amountOne; 
+        inputScreen.innerHTML = amountTwo; 
     },
 
 };
@@ -166,28 +176,33 @@ var input = {
 var calculate = {
 
     getAmount : function() {
-        amountOne = inputScreen.innerHTML;
+
+        // here's the bug 
+
+
+        amountOne = inputScreen.innerHTML;   
         console.log(amountOne);
-        
     },
     clearMemory : function() {
+
+        // return to strings here ?
+
         amountOne = 0;
-        amountTwo = 0;
+        // amountTwo = 0;
     },
 
     stashMath : function(event) {
-        stashOperator = event.target.innerHTML; 
+        
+        stashOperator = event.target.innerHTML;
     },
 
     convertNum : function() {
-        console.log(amountOne);
         let convNumOne = Number(amountOne);
         let convNumTwo = Number(amountTwo);
-        console.log(convNumOne);
-        console.log(convNumTwo);
+   
         amountOne = convNumOne;
         amountTwo = convNumTwo;
-
+   
 
     },
 
@@ -196,25 +211,30 @@ var calculate = {
     // logic isn't working here
 
 
-
     stashNum : function() {
-        amountTwo += amountOne;
-        console.log(amountTwo);
+        amountTwo = amountOne;
+
     },
+
     Math : function() {
-   
+
         switch(stashOperator) {
+
+
+
             case '+':
-                amountOne += amountTwo
+                amountTwo += amountOne;
+                console.log(amountTwo);
             break;
+
             case '-':
-                amountOne -= amountTwo
+                amountTwo -= amountOne;
             break;
             case '/':
-                amountOne / amountTwo
+                amountTwo /= amountOne;
             break;
             case 'x':
-                amountOne * amountTwo
+                amountTwo *= amountOne;
             break; 
         }
 
