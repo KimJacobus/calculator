@@ -1,23 +1,34 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,html,css}",
-  ],
+  content: ["./src/**/*.{js,ts,html,css}"],
   theme: {
 
     extend: {
 
-    fontFamily: {
-      primary: 'dosis' 
-    }, 
-    fontFamily: {
-      primary: 'sofia' 
-    }, 
+        animation: {
+          'bounce-short': 'bounce 0.4s ease-out 2.5',
+          'pulse-short' : 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1)'
+        }
+
+
+
+  //   fontFamily : {
+  //     'dosis': ['dosis', 'sans-serif'] 
+  //   },
+
+  //   fontFamily : {
+
+  //     'sofia': ['sofia', 'sans-serif']
+  //   },
+  
+  // }, 
       
     },
-  },
   plugins: [
 
+
+
   ],
+  }
 }
