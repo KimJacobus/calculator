@@ -11,9 +11,8 @@ var inputHead = document.getElementById('inputHead');
 
 var amountOne = '';
 var amountTwo = '';
+var amountThree = amountTwo;
 var stashOperator =' ';
-var resetOperator; 
-var amountThree = ' ';
 
 
 
@@ -28,22 +27,10 @@ function getNumbers() {
     for (let i = 0; i < numbers.length; i++) {
      numbers[i].addEventListener("click", (event) => {
 
-        // when should the number button empty out the inputscreen ? 
-        // always, but never delete the memory
-        // screen addition gets replaced by clicked button if you always do an input clear
-        // input clear only after the math operator stashed. 
-
-        // ===> actually the numbers never need a input clear ? 
-
 
             // calculate.clearMemory();
-
             effects.numbersPress(event);
             input.inputNumbers(event); 
-
-            // resetOperator = false; 
-
-
         });
       
     };
@@ -66,16 +53,6 @@ function getOperators() {
         effects.clearoperatorsPress(event);
         calculate.clearMemory();
         stashOperator = ' ';
-
-
-        // i don't understand this anymore
-
-        // if(amountOne !== 0) {
-        // input.show();
-        // }
-
-      
-        // resetOperator = true;
     });
 
 
@@ -100,8 +77,8 @@ function getOperators() {
         calculate.convertNum();
         calculate.stashMath(event);
         calculate.stashNum();
-        // calculate.clearMemory();
-        input.clear();
+        input.showThree();
+        // input.clear();
         effects.animatePulse();
 
 
@@ -140,7 +117,6 @@ var effects = {
             inputHead.classList.remove('animate-bounce-short');
         }, 1000);
     },
-
     animatePulse : function(event) {    
         inputHead.classList.add('animate-pulse-short');
         setTimeout(() => {
@@ -156,15 +132,15 @@ var input = {
        let press = Number(event.target.innerHTML);
         inputScreen.innerHTML += press; 
     },
-
     clear: function() {
         inputScreen.innerHTML = " "; 
     },
-
     show : function() {
         inputScreen.innerHTML = amountTwo; 
     },
-
+    showThree : function() {
+        inputScreen.innerHTML = amountThree; 
+    },
 };
 
 
@@ -176,51 +152,36 @@ var input = {
 var calculate = {
 
     getAmount : function() {
-
-        // here's the bug 
-
-
         amountOne = inputScreen.innerHTML;   
-        console.log(amountOne);
     },
+
     clearMemory : function() {
-
-        // return to strings here ?
-
         amountOne = 0;
-        // amountTwo = 0;
+        amountTwo = 0;
     },
 
     stashMath : function(event) {
-        
         stashOperator = event.target.innerHTML;
     },
 
     convertNum : function() {
         let convNumOne = Number(amountOne);
         let convNumTwo = Number(amountTwo);
-   
+
         amountOne = convNumOne;
         amountTwo = convNumTwo;
    
 
     },
 
-
-
-    // logic isn't working here
-
-
     stashNum : function() {
-        amountTwo = amountOne;
+        amountTwo += amountOne;
 
     },
 
     Math : function() {
 
         switch(stashOperator) {
-
-
 
             case '+':
                 amountTwo += amountOne;
@@ -237,30 +198,6 @@ var calculate = {
                 amountTwo *= amountOne;
             break; 
         }
-
-
-
-    }
-
-
-//     Plus : function() {
-//         amountOne += amountTwo + Number(inputScreen.innerHTML); 
-//     },
-
-
-
-//    Equals : function() {
-
-
-//    },
-
-    //     //amount gets put in 
-    //     // plus button clicked 
-    //     // get amount before or during click ?         
-    //     //amount before  plus clicked
-
-    //     // amount gets put in 
-    //     // equal button clicked or plus button or minus button or other button 
-    //     // get amount after button clicked.
+    },
 
 };
